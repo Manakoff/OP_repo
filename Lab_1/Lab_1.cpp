@@ -20,7 +20,7 @@ int main()
     int newNumber{ (-1) * number };
     cout << newNumber << " type is int" << endl;
 
-    double sq5Number{ (-1) * pow(abs(number), (0.2)) };
+    double sq5Number{ (number/abs(number)) * pow(abs(number), (0.2)) };
     cout << sq5Number << " type is double" << endl;
 
     double sq2Number{ sqrt(number) };

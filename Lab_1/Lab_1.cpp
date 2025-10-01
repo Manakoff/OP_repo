@@ -12,15 +12,14 @@ int main()
     cout << "Ввдите целое число: ";
     cin >> number;
 
-    cout << "int - целочисленный тип данных, размер - " << sizeof(number) << " байт" << endl;
-    cout << "Минимальное значение: - 2 147 483 648, максимальное: 2 147 483 647" << endl;
-    cout << "double - тип данных числа с точкой, размер - " << sizeof(double) << " байт" << endl;
-    cout << "Минимальное значение: - 1.7*10^-308, максимальное: 1.7*10^308" << endl;
+    cout << "int - целочисленный тип данных, размер - " << sizeof(number)*8 << " бит" << endl;
+    cout << "double - тип данных числа с точкой, размер - " << sizeof(double)*8 << " бит" << endl;
+
 
     int newNumber{ (-1) * number };
     cout << newNumber << " type is int" << endl;
 
-    double sq5Number{ (number/abs(number)) * pow(abs(number), (0.2)) };
+    double sq5Number{ (number / abs(number)) * pow(abs(number), (0.2)) };
     cout << sq5Number << " type is double" << endl;
 
     double sq2Number{ sqrt(number) };

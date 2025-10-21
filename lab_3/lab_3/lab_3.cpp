@@ -41,10 +41,7 @@ int main()
     cout << "Введите число |x| < 1000: ";
     short x;
     cin >> x;
-    bool pr = true;
 
-    if (x < 0)
-        pr = false;
 
     if (x > -10 && x < 10)
     {
@@ -52,7 +49,13 @@ int main()
     }
     else
     {
-        short b = x;
+
+        short pruv = 1, b = x;
+        if (x < 0)
+        {
+            pruv = (-1);
+        }
+
         short res = 0;
         while (x != 0)
         {
@@ -60,19 +63,7 @@ int main()
             x /= 10;
         }
 
-        if (pr)
-        {
-            cout << res << " зеркальное числу " << b << endl;
-        }
-
-        else
-        {
-            cout << (res * (-1)) << " зеркальное числу " << b << endl;
-        }
+        cout << res << " зеркальное числу " << b << endl;
     }
 
 }
-
-
-
-

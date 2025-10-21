@@ -10,13 +10,13 @@ void lab_1(int number);
 
 int main()
 {
-	cout << "Ââåäèòå ïóíêò êîòîğûé õîòèòå îïğîáîâàòü: " << endl;
+	cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¿ÑƒĞ½ĞºÑ‚ ĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ğ¹ Ñ…Ğ¾Ñ‚Ğ¸Ñ‚Ğµ Ğ¾Ğ¿Ñ€Ğ¾Ğ±Ğ¾Ğ²Ğ°Ñ‚ÑŒ: " << endl;
 	short pr;
 	cin >> pr;
 
 	if (pr == 1)
 	{
-		cout << "Ââåäèòå ÷èñëî: " << endl;
+		cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾: " << endl;
 		int number;
 		cin >> number;
 
@@ -27,7 +27,7 @@ int main()
 	}
 	else if (pr == 2)
 	{
-		cout << "Ââåäèòå òğè ÷èñëà: " << endl;
+		cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ‚Ñ€Ğ¸ Ñ‡Ğ¸ÑĞ»Ğ°: " << endl;
 		int num_1, num_2, num_3;
 		cin >> num_1 >> num_2 >> num_3;
 
@@ -39,7 +39,7 @@ int main()
 	else
 	{
 		int number;
-		cout << "Ââäèòå öåëîå ÷èñëî: ";
+		cout << "Ğ’Ğ²Ğ´Ğ¸Ñ‚Ğµ Ñ†ĞµĞ»Ğ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾: ";
 		cin >> number;
 
 		lab_1(number);
@@ -49,13 +49,13 @@ int main()
 
 int fun(int number)
 {
-	cout << "Ôóíêöèÿ äëÿ ïîèñêà áëèæàéøîãî ÷èñëà êğàòíîãî 5" << endl;
+	cout << "Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ´Ğ»Ñ Ğ¿Ğ¾Ğ¸ÑĞºĞ° Ğ±Ğ»Ğ¸Ğ¶Ğ°Ğ¹ÑˆĞ¾Ğ³Ğ¾ Ñ‡Ğ¸ÑĞ»Ğ° ĞºÑ€Ğ°Ñ‚Ğ½Ğ¾Ğ³Ğ¾ 5" << endl;
 	return round(number / 5) * 5;
 
 }
 int fun(int number_1, int number_2, int number_3)
 {
-	cout << "Ôóíêöèÿ äëÿ íàõîæäåíèÿ ñóììû ìàêñèìàëüíîãî è ìèíèìàëüíîãî ÷èñëà " << endl;
+	cout << "Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ´Ğ»Ñ Ğ½Ğ°Ñ…Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ñ ÑÑƒĞ¼Ğ¼Ñ‹ Ğ¼Ğ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ¾Ğ³Ğ¾ Ğ¸ Ğ¼Ğ¸Ğ½Ğ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ¾Ğ³Ğ¾ Ñ‡Ğ¸ÑĞ»Ğ°  " << endl;
 	int masiv[] = { number_1, number_2, number_3 };
 	std::sort(masiv, masiv + 3);
 
@@ -74,8 +74,8 @@ int fun(int number_1, int number_2, int number_3)
 
 void lab_1(int number)
 {
-	cout << "int - öåëî÷èñëåííûé òèï äàííûõ, ğàçìåğ - " << sizeof(number) * 8 << " áèò" << endl;
-	cout << "double - òèï äàííûõ ÷èñëà ñ òî÷êîé, ğàçìåğ - " << sizeof(double) * 8 << " áèò" << endl;
+	cout << "int - Ñ†ĞµĞ»Ğ¾Ñ‡Ğ¸ÑĞ»ĞµĞ½Ğ½Ñ‹Ğ¹ Ñ‚Ğ¸Ğ¿ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…, Ñ€Ğ°Ğ·Ğ¼ĞµÑ€ - " << sizeof(number) * 8 << " Ğ±Ğ¸Ñ‚" << endl;
+	cout << "double - Ñ‚Ğ¸Ğ¿ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… Ñ‡Ğ¸ÑĞ»Ğ° Ñ Ñ‚Ğ¾Ñ‡ĞºĞ¾Ğ¹, Ñ€Ğ°Ğ·Ğ¼ĞµÑ€ - " << sizeof(double) * 8 << " Ğ±Ğ¸Ñ‚" << endl;
 
 
 	int newNumber{ (-1) * number };

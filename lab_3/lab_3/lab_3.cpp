@@ -11,7 +11,7 @@ int main()
     cout << "Введите кол-во элементов: ";
     cin >> n;
 
-    int maximum = -1000000, sum = 0, k = 0;
+    int maximum = pow(-2, 31), sum = 0, k = 0;
 
     for (short i = 1; i <= n; i++)
     {
@@ -42,28 +42,20 @@ int main()
     short x;
     cin >> x;
 
-
-    if (x > -10 && x < 10)
+    short pruv = 1, b = x;
+    if (x < 0)
     {
-        cout << x << " зеркальное числу " << x;
+        pruv = (-1);
     }
-    else
+    
+    short res = 0;
+    while (x != 0)
     {
-
-        short pruv = 1, b = x;
-        if (x < 0)
-        {
-            pruv = (-1);
-        }
-
-        short res = 0;
-        while (x != 0)
-        {
-            res = res * 10 + x % 10;
-            x /= 10;
-        }
-
-        cout << res << " зеркальное числу " << b << endl;
+        res = res * 10 + abs(x % 10);
+        x /= 10;
     }
+    
+    cout << (pruv*res) << " зеркальное числу " << b << endl;
+    
 
 }

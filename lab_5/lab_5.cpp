@@ -10,31 +10,35 @@ void lab_1(int number);
 
 int main()
 {
-	cout << "Введите пункт который хотите опробовать: " << endl;
-	short pr;
-	cin >> pr;
+	setlocale(LC_ALL, "RU");
 
-	if (pr == 1)
+	cout << "Выберете номер пункта 1/2: " << endl;
+
+	short punkt;
+	cin >> punkt;
+
+	if (punkt == 1)
 	{
-		cout << "Введите число: " << endl;
-		int number;
-		cin >> number;
-
-		int res = fun(number);
-
-		cout << res << endl;
-
-	}
-	else if (pr == 2)
-	{
-		cout << "Введите три числа: " << endl;
-		int num_1, num_2, num_3;
+		cout << "Введите 3 числа, если нужно одно впишите в два оставшихся нули: " << endl;
+		short num_1, num_2, num_3;
 		cin >> num_1 >> num_2 >> num_3;
 
-		int res = fun(num_1, num_2, num_3);
 
-		cout << res << endl;
+		if (((num_1 == 0 && num_2 == 0) && num_3 != 0) || ((num_1 == 0 && num_3 == 0) && num_2 != 0) || ((num_3 == 0 && num_2 == 0) && num_1 != 0))
+		{
+			int number = num_1 + num_2 + num_3;
+			int res = fun(number);
 
+			cout << res << endl;
+
+		}
+		else
+		{
+			int res = fun(num_1, num_2, num_3);
+
+			cout << res << endl;
+
+		}
 	}
 	else
 	{
@@ -50,7 +54,8 @@ int main()
 int fun(int number)
 {
 	cout << "Функция для поиска ближайшого числа кратного 5" << endl;
-	return round(number / 5) * 5;
+	double num = number;
+	return std::round(num / 5) * 5;
 
 }
 int fun(int number_1, int number_2, int number_3)

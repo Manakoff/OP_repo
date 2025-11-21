@@ -2,8 +2,9 @@
 #include <stdlib.h>
 using namespace std;
 
-void print_m(int** matrix, int& row, int& colume)
+void print_m(int** &matrix, int& row, int& colume)
 {
+    
     for (int i = 0; i < row; ++i)
     {
         for (int j = 0; j < colume; ++j)
@@ -15,8 +16,9 @@ void print_m(int** matrix, int& row, int& colume)
     cout << endl;
 }
 
-void print_m(int* matrix, int& row)
+void print_m(int* &matrix, int& row)
 {
+    cout << "Одномерный массив с индексами столбцов." << endl;
     for (int i = 0; i < row; ++i)
     {
             cout << matrix[i] << " ";
@@ -25,7 +27,7 @@ void print_m(int* matrix, int& row)
 
 }
 
-void fun_zupolnenie(int* odn_m, int** matrix, int& row, int& column)
+void fun_zupolnenie(int* &odn_m, int** &matrix, int& row, int& column)
 {
     
     int k = 0;
@@ -41,9 +43,24 @@ void fun_zupolnenie(int* odn_m, int** matrix, int& row, int& column)
                 break;
             }
         }
-        
-        
+       
     }
+    int count_1 = 0;
+    int count_2 = 0;
+    for (int i = 0; i < (row); ++i)
+    {
+        if (i == odn_m[count_1])
+        {
+            count_1 += 1;
+        }
+        else
+        {
+            matrix[count_2] = matrix[i];
+            count_2 += 1;
+        }
+    }
+    matrix = (int**)realloc(matrix, sizeof(int*) * (row - k));
+    row -= k;
     
 }
 
@@ -54,15 +71,14 @@ int main()
     int row = 2;
     int column = 2;
 
-    //Выделение памяти дляя матрицы 2х2
-    int** matrix = (int**)calloc(row, sizeof(int*));
+    //Выделение памяти для матрицы 2х2
+    int** matrix = (int**)malloc(row*sizeof(int*));
 
     for (int i = 0; i < row; ++i)
     {
         matrix[i] = (int*)calloc(column, sizeof(int));
     }
 
-    print_m(matrix, row, column);
 
     //Заполнение матрицы
     for (int i = 0; i < row; ++i) {
@@ -88,11 +104,11 @@ int main()
         row += A;
         column += B;
 
-        matrix = (int**)calloc(row, sizeof(int*));
+        matrix = (int**)realloc(matrix, sizeof(int*)*row);
 
         for (int i = 0; i < row; ++i)
         {
-            matrix[i] = (int*)calloc(column, sizeof(int));
+            matrix[i] = (int*)malloc(column*sizeof(int));
 
         }
 
@@ -104,6 +120,9 @@ int main()
                 matrix[i][j] = C * i + D * j;
             }
         }
+        matrix[row - 2][column - 2] = A; matrix[row - 2][column - 1] = B; matrix[row - 1][column - 2] = C; matrix[row - 1][column - 1] = D;
+
+        cout << "Начальная матрица" << endl;
         print_m(matrix, row, column);
         int k = 0;
         for (int i = 0; i < row; ++i)
@@ -118,12 +137,26 @@ int main()
                 }
             }
         }
+        
         int* odn_m = (int*)calloc(k, sizeof(int));
         fun_zupolnenie(odn_m, matrix, row, column);
 
+        cout << "Изменённая матрица" << endl;
         print_m(matrix, row, column);
         print_m(odn_m, k);
+
+        for (int i = 0; i < row-k; ++i)
+        {
+            free(matrix[i]);
+            matrix[i] = nullptr;
+        }
+        free(matrix);
+        matrix = nullptr;
+        free(odn_m);
+        matrix = nullptr;
+        cout << "Очистка памяти" << endl;
     }
+    
     
 
     

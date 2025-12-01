@@ -9,7 +9,7 @@ using namespace std;
 
 void bubble_sort_s(std::array<int, 10>& massive);
 void bubble_sort_u(std::array<int, 10>* massive);
-void bubble_sort(std::array<int, 10> massive);
+std::array<int, 10> bubble_sort(const std::array<int, 10> massive);
 void look_m(const std::vector<int>& massive);
 void look_m(const std::array<int, 10>& massive);
 void elem_search(const std::vector<int>& massive, int &num);
@@ -141,19 +141,21 @@ int main()
 		switch(punct)
 		{
 		case 0:
-			bubble_sort(massive);
+			std::array<int, 10> mas = bubble_sort(massive);
+			look_m(mas);
 			break;
 		case 1:
 			bubble_sort_s(massive);
+			look_m(massive);
 			break;
 		case 2:
 			bubble_sort_u(&massive);
+			look_m(massive);
 			break;
 		default:
 			break;
 		}
 
-		look_m(massive);
 
 	}
 	return 0;
@@ -188,9 +190,9 @@ void bubble_sort_u(std::array<int, 10>* massive)
 		sw = false;
 		for (int j = 0; j < 9 - i; ++j)
 		{
-			if (massive[j] > massive[j + 1])
+			if ((*massive)[j] > (*massive)[j + 1])
 			{
-				std::swap(massive[j], massive[j + 1]);
+				std::swap((*massive)[j], (*massive)[j + 1]);
 				sw = true;
 			}
 		}
@@ -200,17 +202,18 @@ void bubble_sort_u(std::array<int, 10>* massive)
 		}
 	}
 }
-void bubble_sort(std::array<int, 10> massive)
+std::array<int, 10> bubble_sort(const std::array<int, 10> massive)
 {
+	std::array<int, 10> mas = massive;
 	bool sw;
 	for (int i = 0; i < 10; ++i)
 	{
 		sw = false;
 		for (int j = 0; j < 9 - i; ++j)
 		{
-			if (massive[j] > massive[j + 1])
+			if (mas[j] > mas[j + 1])
 			{
-				std::swap(massive[j], massive[j + 1]);
+				std::swap(mas[j], mas[j + 1]);
 				sw = true;
 			}
 		}
@@ -219,6 +222,7 @@ void bubble_sort(std::array<int, 10> massive)
 			break;
 		}
 	}
+	return mas;
 }
 void look_m(const std::vector<int>& massive)
 {
@@ -273,3 +277,15 @@ void punkt6_m(std::vector<int>& massive, int& minimum, int& maximum)
 		}
 	}
 }
+/*
+std::vector — динамический массив, который может расти и уменьшаться в размере во время выполнения. 
+Он отлично подходит для работы с массивами, которые меняются по размеру, добавляя или удаляя элементы. 
+В пункте 1 я использовал vector потому, что необходимо динамическое управление размером и удобство вставок/удалений.
+
+std::array — статический массив фиксированного размера, который занимает фиксированное место в памяти. 
+В пункте 2 мя использовал array, потому что размер заранее известен (10 элементов)
+
+Когда число элементов фиксировано и заранее известно, std::array более предпочтителен благодаря тому,
+что он занимает меньше памяти и работает немного быстрее за счет отсутствия динамического управления памятью. 
+В случае, когда нужен динамический размер, vector — единственный выбор.
+*/
